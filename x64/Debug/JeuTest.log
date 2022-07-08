@@ -1,0 +1,8 @@
+﻿  Window.cpp
+C:\Users\User\source\repos\JeuTest\Window.cpp(95,39): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\User\source\repos\JeuTest\Window.cpp(95,36): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\User\source\repos\JeuTest\Window.cpp(109,138): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\User\source\repos\JeuTest\Window.cpp(109,90): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+  main.cpp
+  Génération de code en cours...
+  JeuTest.vcxproj -> C:\Users\User\source\repos\JeuTest\x64\Debug\JeuTest.exe
