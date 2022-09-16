@@ -4,10 +4,11 @@
 #include "Sorcerer.hpp"
 #include "Warrior.hpp"
 
+
 using namespace sf;
 int main()
 {
-    RenderWindow window(VideoMode(WIN_WIDTH, WIN_HEIGHT), "Titre");
+    
     
     Field field(8, 5);
     int pos[2] = { 0, 1 };
@@ -18,6 +19,10 @@ int main()
     
     field.print();
     field.showObjects();
-    manageWindow(window, field);
+    
+    field.getCharacters()[0]->move(1, 0);
+    field.print();
+    field.showObjects();
+    manageWindow(field);
     return 0;
 }

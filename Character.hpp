@@ -35,5 +35,7 @@ public:
     virtual std::string getImgString() {
         return "";
     };
+    void move(int x, int y);
+    virtual void atk() {};
 };
 #endif

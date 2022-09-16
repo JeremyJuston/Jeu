@@ -40,14 +40,14 @@ sf::Sprite Button::getSprite() {
 	return this->m_sprite;
 }
 
-sf::IntRect Button::getSpriteRect() {
-	return this->m_sprite.getTextureRect();
-}
-
 bool Button::isInSpriteRect(int x, int y) {
-	return this->m_sprite.getTextureRect().contains(x, y);
+	return this->m_sprite.getGlobalBounds().contains(x, y);
 }
 
 void Button::setPosition(float x, float y) {
 	m_sprite.setPosition(x, y);
+}
+
+sf::Vector2f Button::getPosition() {
+	return m_sprite.getPosition();
 }

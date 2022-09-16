@@ -1,4 +1,5 @@
 #include "Window.hpp"
+#include "Input.hpp"
 
 #include <vector>
 
@@ -6,27 +7,31 @@
 using namespace sf;
 using namespace std;
 
+RenderWindow window(VideoMode(WIN_WIDTH, WIN_HEIGHT), "Titre");
 Font font;
+Input input;
+Text text;
+std::vector<Button*> characterButtons;
+std::vector<Button*> actionButtons;
 
 //Manages the game Window
-void manageWindow(RenderWindow &window, Field field) {
+void manageWindow(Field field) {
     
     loadFont();
-    Text text;
-    
     setUpText(text, "TEST", 30, Color::Yellow);
-    std::vector<Button *> characterButtons = createButtonCharacterList(field);
-    int tour = 0;
 
+    characterButtons = createButtonCharacterList(field);
+    int tour = 0;
     bool joueur1 = true;
-    bool joueur2 = false;
     
     while (window.isOpen()) {
         Event event;
         
         while (window.pollEvent(event)) {
-            eventHandler(event, window);
+            input.eventHandler(event, window);
         }
+        checkAction();
+        input.setActions(false);
         
         window.clear(Color::Black);
 
@@ -39,13 +44,27 @@ void manageWindow(RenderWindow &window, Field field) {
     }
 }
 
-//Handle all types of events triggered on the game Window
-void eventHandler(Event event, RenderWindow& window) {
-    
-    if (event.type == Event::Closed) {
+
+
+void checkAction() {
+    if (input.getAction().left_click == true) {
+        sf::Vector2i mouse_pos = input.getAction().mouse_position;
+        cout << "mouse_pos : x = " << mouse_pos.x << " y = " << mouse_pos.y << endl;
+
+        for (int char_index = 0; char_index < characterButtons.size(); char_index++) {
+            cout << "char_pos : x = " << int(characterButtons[char_index]->getPosition().x) << " y = " << int(characterButtons[char_index]->getPosition().y) << endl;
+            if (characterButtons[char_index]->isInSpriteRect(mouse_pos.x, mouse_pos.y)) {
+                cout << "DEDANS" << endl;
+            }
+        }
+    }
+
+    if (input.getAction().escape == true) {
+        cout << "test" << endl;
         window.close();
     }
 }
+
 
 //Loads the font
 void loadFont() {
@@ -113,5 +132,19 @@ void displayCharacters(sf::RenderWindow& window, std::vector<Button *> characLis
     
     for (int i = 0; i < characList.size(); i++) {
         window.draw(characList[i]->getSprite());
+        
+        
+        sf::FloatRect bounds = characList[i]->getSprite().getGlobalBounds();
+        sf::RectangleShape to_draw = RectangleShape();
+        Vector2f size = Vector2f(bounds.width, bounds.height);
+        to_draw.setSize(size);
+        to_draw.setPosition(bounds.left, bounds.top);
+        to_draw.setFillColor(sf::Color::Transparent);
+        to_draw.setOutlineColor(sf::Color::Red);
+        to_draw.setOutlineThickness(2);
+        window.draw(to_draw);
+        
+       
+        
     }
 }

@@ -9,6 +9,7 @@ public:
     Sorcerer(bool team, int position[2]);
     void print();
     std::string getImgString();
+    void atk(Cell target);
 };
 
 #endif

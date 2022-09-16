@@ -17,3 +17,7 @@ string Sorcerer::getImgString() {
     string sorcerer = "sorcerer.png";
     return sorcerer;
 }
+
+void Sorcerer::atk(Cell target) {
+    
+};

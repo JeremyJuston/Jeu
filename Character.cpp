@@ -49,3 +49,8 @@ void Character::printChar() {
     cout << "at position [" << m_position[0] << ", " << m_position[1] << "] ";
     cout << "and I have " << m_hp << " hp, " << m_atk << " attack, " << m_spd << " spd !" << endl;
 }
+
+void Character::move(int x, int y) {
+    this->m_position[0] = x;
+    this->m_position[1] = y;
+}

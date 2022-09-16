@@ -1,1 +1,2 @@
 C:\Users\User\source\repos\JeuTest\x64\Debug\JeuTest.exe
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\x64\Debug\JeuTest.exe
