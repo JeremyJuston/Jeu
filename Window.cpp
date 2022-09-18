@@ -39,6 +39,7 @@ void manageWindow(Field field) {
         //window.draw(characterButtons[0]->getSprite());
         createGround(window);
         displayCharacters(window, characterButtons);
+        displayActions(window, actionButtons);
         //window.draw(button.getSprite());
         window.display();
     }
@@ -55,14 +56,23 @@ void checkAction() {
             cout << "char_pos : x = " << int(characterButtons[char_index]->getPosition().x) << " y = " << int(characterButtons[char_index]->getPosition().y) << endl;
             if (characterButtons[char_index]->isInSpriteRect(mouse_pos.x, mouse_pos.y)) {
                 cout << "DEDANS" << endl;
+                createActions(characterButtons[char_index]);
+                
             }
         }
     }
 
     if (input.getAction().escape == true) {
-        cout << "test" << endl;
         window.close();
     }
+}
+
+void createActions(Button *charButton) {
+    actionButtons.push_back(new Button("attack.png"));
+    actionButtons.back()->setPosition(charButton->getPosition().x + 15, charButton->getPosition().y + 130);
+
+    actionButtons.push_back(new Button("movement.png"));
+    actionButtons.back()->setPosition(charButton->getPosition().x + 85, charButton->getPosition().y + 130);
 }
 
 
@@ -119,9 +129,7 @@ std::vector<Button *> createButtonCharacterList(Field field) {
     std::vector<Button *> characterButtonList;
 
     for (int i = 0; i < field.getCharacters().size(); i++) {
-        
-        Button charac(field.getCharacters()[i]->getImgString());
-        
+                
         characterButtonList.push_back(new Button(field.getCharacters()[i]->getImgString()));
         characterButtonList.back()->setPosition(field.getCharacters()[i]->getPositionX() * 150, field.getCharacters()[i]->getPositionY() * 150);
     }
@@ -144,7 +152,12 @@ void displayCharacters(sf::RenderWindow& window, std::vector<Button *> characLis
         to_draw.setOutlineThickness(2);
         window.draw(to_draw);
         
-       
-        
+    }
+}
+
+void displayActions(sf::RenderWindow& window, std::vector<Button*> actionList) {
+
+    for (int i = 0; i < actionList.size(); i++) {
+        window.draw(actionList[i]->getSprite());
     }
 }

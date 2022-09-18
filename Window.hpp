@@ -15,6 +15,8 @@ std::vector<Button *> createButtonCharacterList(Field field);
 void displayCharacters(sf::RenderWindow& window, std::vector<Button *> characList);
 
 void checkAction();
+void createActions(Button *charButton);
+void displayActions(sf::RenderWindow& window, std::vector<Button*> actionList);
 
 //Window constants
 const int WIN_WIDTH = 1200;
