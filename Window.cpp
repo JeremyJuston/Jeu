@@ -13,6 +13,7 @@ Input input;
 Text text;
 std::vector<Button*> characterButtons;
 std::vector<Button*> actionButtons;
+std::vector<Button*> rangeButtons;
 Character *activeChar;
 string activeAction;
 
@@ -28,20 +29,20 @@ void manageWindow(Field field) {
     
     while (window.isOpen()) {
         Event event;
-        
         while (window.pollEvent(event)) {
             input.eventHandler(event, window);
         }
         checkAction(field);
         input.setActions(false);
         
-        window.clear(Color::Black);
-
+        window.clear(sf::Color::Black);
         window.draw(text);
         //window.draw(characterButtons[0]->getSprite());
+        displayRange();
         createGround(window);
         displayCharacters(window, characterButtons);
         displayActions(window, actionButtons);
+        
         //window.draw(button.getSprite());
         window.display();
     }
@@ -49,6 +50,56 @@ void manageWindow(Field field) {
 
 void clearDisplay() {
     actionButtons.clear();
+    rangeButtons.clear();
+}
+
+void actionClicked(Field field, int act_index) {
+    cout << "DEDANS act" << endl;
+    if (act_index == 0) {
+        activeAction = "attack";
+    }
+    else if (act_index == 1) {
+        activeAction = "move";
+    }
+    createRangeList(field);
+    cout << activeAction << endl;
+}
+
+void createRangeList(Field field) {
+    int size = 150;
+    int range = 0;
+    Texture texture;
+    string imgPath;
+
+    if (activeAction == "attack") {
+        range = activeChar->getRange();
+        imgPath = "red.png";
+    }  
+    else {
+        range = activeChar->getSpd();
+        imgPath = "green.png";
+    }
+ 
+    if (!texture.loadFromFile(imgPath)) {
+        cout << "There was a problem reading the image : " << imgPath << endl;
+    }
+
+    std::vector <std::pair<int, int>> cases_in_range = 
+        field.reachableCases(activeChar->getPositionX(), 
+                                activeChar->getPositionY(), range);
+
+    for (int i = 0; i < cases_in_range.size(); i += 1) {
+        rangeButtons.push_back(new Button(imgPath));
+        rangeButtons.back()->setPosition(cases_in_range[i].first * size,
+                                            cases_in_range[i].second * size);
+    }
+ 
+}
+
+void displayRange() {
+    for (int i = 0; i < rangeButtons.size(); i += 1) {
+        window.draw(rangeButtons[i]->getSprite());
+    }
 }
 
 void checkAction(Field field) {
@@ -62,14 +113,8 @@ void checkAction(Field field) {
         for (int act_index = 0; act_index < actionButtons.size(); act_index++) {
 
             if (actionButtons[act_index]->isInSpriteRect(mouse_pos.x, mouse_pos.y)) {
-                cout << "DEDANS act" << endl;
-                if (act_index == 0) {
-                    activeAction = "attack";
-                }
-                else if (act_index == 1) {
-                    activeAction = "move";
-                }
-                cout << activeAction << endl;
+                clearDisplay();
+                actionClicked(field, act_index);
                 case_found = true;
                 break;
             }
@@ -131,7 +176,6 @@ void setUpText(Text text, String txt, int size, Color color, Text::Style style1,
 void createGround(RenderWindow& window) {
     int size = 150;
     int numberCases = int(WIN_WIDTH * WIN_HEIGHT / (size * size));
-    vector<Button> ground(numberCases);
 
     Texture texture;
     string imgPath = "test.png";

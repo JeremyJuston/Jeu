@@ -30,6 +30,7 @@ public:
     int getHp();
     int getAtk();
     int getSpd();
+    int getRange();
     void printChar();
     virtual void print() {};
     virtual std::string getImgString() {

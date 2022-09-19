@@ -16,7 +16,7 @@ class Button {
 		Button(std::string msg, std::string imgPath);
 		sf::Sprite getSprite();
 		bool isInSpriteRect(int x, int y);
-		void setPosition(float x, float y);
+		void setPosition(int x, int y);
 		sf::Vector2f getPosition();
 };
 

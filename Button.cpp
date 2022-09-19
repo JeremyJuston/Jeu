@@ -44,7 +44,7 @@ bool Button::isInSpriteRect(int x, int y) {
 	return this->m_sprite.getGlobalBounds().contains(x, y);
 }
 
-void Button::setPosition(float x, float y) {
+void Button::setPosition(int x, int y) {
 	m_sprite.setPosition(x, y);
 }
 

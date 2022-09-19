@@ -30,6 +30,10 @@ int Character::getSpd() {
     return this->m_spd;
 }
 
+int Character::getRange() {
+    return this->m_range;
+}
+
 int Character::getAtk() {
     return this->m_atk;
 }

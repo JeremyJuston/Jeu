@@ -18,6 +18,9 @@ void checkAction(Field field);
 void createActions(Button *charButton);
 void displayActions(sf::RenderWindow& window, std::vector<Button*> actionList);
 void clearDisplay();
+void actionClicked(Field field, int act_index);
+void createRangeList(Field field);
+void displayRange();
 
 //Window constants
 const int WIN_WIDTH = 1200;

@@ -45,7 +45,7 @@ std::vector <std::pair<int, int>> Field::reachableCases(int start_x, int start_y
 			}
 		}
 	}
-
+	
 	return reachable_cases;
 };
 
