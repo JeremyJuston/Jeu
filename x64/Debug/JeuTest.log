@@ -1,6 +1,20 @@
-﻿  Window.cpp
-C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(122,39): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(122,36): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(134,138): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(134,90): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+﻿  Button.cpp
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Button.cpp(44,54): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Button.cpp(44,51): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+  Field.cpp
+  Window.cpp
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(157,39): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(157,36): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(169,138): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(169,90): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+  main.cpp
+  Génération de code en cours...
   JeuTest.vcxproj -> C:\Users\Jérémy\Documents\github\loisirs\Jeu\x64\Debug\JeuTest.exe

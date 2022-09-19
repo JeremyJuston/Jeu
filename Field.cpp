@@ -29,7 +29,25 @@ Field::Field(int width, int height) : m_height(height), m_width(width) {
 	m_characters = characters;
 };
 
-bool Field::movementPossible(Cell destination) { return true; };
+
+int Field::distance(int start_x, int start_y, int end_x, int end_y) {
+	return(int(abs(start_x - end_x) + abs(start_y - end_y)));
+}
+
+std::vector <std::pair<int, int>> Field::reachableCases(int start_x, int start_y, int range) {
+	
+	std::vector <std::pair<int, int>> reachable_cases;
+
+	for (int x = 0; x < m_width; x++) {
+		for (int y = 0; y < m_height; y++) {
+			if (distance(start_x, start_y, x, y) <= range) {
+				reachable_cases.push_back(std::make_pair(x, y));
+			}
+		}
+	}
+
+	return reachable_cases;
+};
 
 
 void Field::addCharacter(string nom, int position[2]) {

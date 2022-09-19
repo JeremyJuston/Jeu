@@ -13,6 +13,8 @@ Input input;
 Text text;
 std::vector<Button*> characterButtons;
 std::vector<Button*> actionButtons;
+Character *activeChar;
+string activeAction;
 
 //Manages the game Window
 void manageWindow(Field field) {
@@ -30,7 +32,7 @@ void manageWindow(Field field) {
         while (window.pollEvent(event)) {
             input.eventHandler(event, window);
         }
-        checkAction();
+        checkAction(field);
         input.setActions(false);
         
         window.clear(Color::Black);
@@ -45,21 +47,54 @@ void manageWindow(Field field) {
     }
 }
 
+void clearDisplay() {
+    actionButtons.clear();
+}
 
+void checkAction(Field field) {
+    
+    bool case_found = false;
 
-void checkAction() {
-    if (input.getAction().left_click == true) {
+    if (input.getAction().left_click == true && !case_found) {
         sf::Vector2i mouse_pos = input.getAction().mouse_position;
         cout << "mouse_pos : x = " << mouse_pos.x << " y = " << mouse_pos.y << endl;
 
-        for (int char_index = 0; char_index < characterButtons.size(); char_index++) {
-            cout << "char_pos : x = " << int(characterButtons[char_index]->getPosition().x) << " y = " << int(characterButtons[char_index]->getPosition().y) << endl;
-            if (characterButtons[char_index]->isInSpriteRect(mouse_pos.x, mouse_pos.y)) {
-                cout << "DEDANS" << endl;
-                createActions(characterButtons[char_index]);
-                
+        for (int act_index = 0; act_index < actionButtons.size(); act_index++) {
+
+            if (actionButtons[act_index]->isInSpriteRect(mouse_pos.x, mouse_pos.y)) {
+                cout << "DEDANS act" << endl;
+                if (act_index == 0) {
+                    activeAction = "attack";
+                }
+                else if (act_index == 1) {
+                    activeAction = "move";
+                }
+                cout << activeAction << endl;
+                case_found = true;
+                break;
             }
         }
+    }
+
+    if (input.getAction().left_click == true && !case_found) {
+        sf::Vector2i mouse_pos = input.getAction().mouse_position;
+
+        for (int char_index = 0; char_index < characterButtons.size(); char_index++) {
+            cout << "char_pos : x = " << int(characterButtons[char_index]->getPosition().x) << " y = " << int(characterButtons[char_index]->getPosition().y) << endl;
+            
+            if (characterButtons[char_index]->isInSpriteRect(mouse_pos.x, mouse_pos.y)) {
+                cout << "DEDANS" << endl;
+                clearDisplay();
+                createActions(characterButtons[char_index]);
+                activeChar = field.getCharacters()[char_index];
+                case_found = true;
+                break;
+            }
+        }
+    }
+
+    if (input.getAction().left_click == true && !case_found) {
+        clearDisplay();
     }
 
     if (input.getAction().escape == true) {
@@ -69,10 +104,10 @@ void checkAction() {
 
 void createActions(Button *charButton) {
     actionButtons.push_back(new Button("attack.png"));
-    actionButtons.back()->setPosition(charButton->getPosition().x + 15, charButton->getPosition().y + 130);
+    actionButtons.back()->setPosition(charButton->getPosition().x + 15, charButton->getPosition().y + 150);
 
     actionButtons.push_back(new Button("movement.png"));
-    actionButtons.back()->setPosition(charButton->getPosition().x + 85, charButton->getPosition().y + 130);
+    actionButtons.back()->setPosition(charButton->getPosition().x + 85, charButton->getPosition().y + 150);
 }
 
 
@@ -140,7 +175,6 @@ void displayCharacters(sf::RenderWindow& window, std::vector<Button *> characLis
     
     for (int i = 0; i < characList.size(); i++) {
         window.draw(characList[i]->getSprite());
-        
         
         sf::FloatRect bounds = characList[i]->getSprite().getGlobalBounds();
         sf::RectangleShape to_draw = RectangleShape();

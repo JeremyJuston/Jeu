@@ -23,7 +23,8 @@ public:
     ~Field();
     Field(int width, int height);
 
-    bool movementPossible(Cell destination);
+    int distance(int start_x, int start_y, int end_x, int end_y);
+    std::vector <std::pair<int, int>> reachableCases(int start_x, int start_y, int range);
     void addCharacter(std::string nom, int position[2]);
     void delCharacter(Character *charac);
     void print();
