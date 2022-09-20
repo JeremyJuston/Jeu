@@ -19,6 +19,8 @@ void createActions(Button *charButton);
 void displayActions(sf::RenderWindow& window, std::vector<Button*> actionList);
 void clearDisplay();
 void actionClicked(Field field, int act_index);
+void characterClicked(Field field, int char_index);
+void rangeClicked(Field field, int range_index);
 void createRangeList(Field field);
 void displayRange();
 

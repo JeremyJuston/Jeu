@@ -22,13 +22,14 @@ void manageWindow(Field field) {
     
     loadFont();
     setUpText(text, "TEST", 30, Color::Yellow);
-
     characterButtons = createButtonCharacterList(field);
+    
     int tour = 0;
     bool joueur1 = true;
     
     while (window.isOpen()) {
         Event event;
+        
         while (window.pollEvent(event)) {
             input.eventHandler(event, window);
         }
@@ -54,7 +55,6 @@ void clearDisplay() {
 }
 
 void actionClicked(Field field, int act_index) {
-    cout << "DEDANS act" << endl;
     if (act_index == 0) {
         activeAction = "attack";
     }
@@ -64,6 +64,40 @@ void actionClicked(Field field, int act_index) {
     createRangeList(field);
     cout << activeAction << endl;
 }
+
+void characterClicked(Field field, int char_index) {
+    createActions(characterButtons[char_index]);
+    activeChar = field.getCharacters()[char_index];
+}
+
+void rangeClicked(Field field, int range_index) {
+    int x_case = int(rangeButtons[range_index]->getPosition().x / 150);
+    int y_case = int(rangeButtons[range_index]->getPosition().y / 150);
+    cout << x_case << y_case << endl;
+
+    if (field.getMap()[x_case + y_case * field.getWidth()].isOccupied() && activeAction == "move") {
+        
+    }
+    else if (field.getMap()[x_case + y_case * field.getWidth()].isOccupied() && activeAction == "attack") {
+        
+    }
+    else if (!field.getMap()[x_case + y_case * field.getWidth()].isOccupied() && activeAction == "move") {
+        activeChar->move(x_case, y_case);
+        int index_char = 0;
+        for (int i = 0; i < characterButtons.size(); i++) {
+            if (field.getCharacters()[i] == activeChar) {
+                index_char = i;
+                break;
+            }
+        }
+        characterButtons[index_char]->setPosition(x_case * 150, y_case * 150);
+    }
+    else if (!field.getMap()[x_case + y_case * field.getWidth()].isOccupied() && activeAction == "attack") {
+
+    }
+
+}
+
 
 void createRangeList(Field field) {
     int size = 150;
@@ -108,7 +142,6 @@ void checkAction(Field field) {
 
     if (input.getAction().left_click == true && !case_found) {
         sf::Vector2i mouse_pos = input.getAction().mouse_position;
-        cout << "mouse_pos : x = " << mouse_pos.x << " y = " << mouse_pos.y << endl;
 
         for (int act_index = 0; act_index < actionButtons.size(); act_index++) {
 
@@ -125,18 +158,30 @@ void checkAction(Field field) {
         sf::Vector2i mouse_pos = input.getAction().mouse_position;
 
         for (int char_index = 0; char_index < characterButtons.size(); char_index++) {
-            cout << "char_pos : x = " << int(characterButtons[char_index]->getPosition().x) << " y = " << int(characterButtons[char_index]->getPosition().y) << endl;
             
             if (characterButtons[char_index]->isInSpriteRect(mouse_pos.x, mouse_pos.y)) {
-                cout << "DEDANS" << endl;
                 clearDisplay();
-                createActions(characterButtons[char_index]);
-                activeChar = field.getCharacters()[char_index];
+                characterClicked(field, char_index);
                 case_found = true;
                 break;
             }
         }
     }
+
+    if (input.getAction().left_click == true && !case_found) {
+        sf::Vector2i mouse_pos = input.getAction().mouse_position;
+        
+        for (int range_index = 0; range_index < rangeButtons.size(); range_index++) {
+            
+            if (rangeButtons[range_index]->isInSpriteRect(mouse_pos.x, mouse_pos.y)) {
+                rangeClicked(field, range_index);
+                clearDisplay();
+                case_found = true;
+                break;
+            }
+        }
+    }
+
 
     if (input.getAction().left_click == true && !case_found) {
         clearDisplay();
@@ -154,7 +199,6 @@ void createActions(Button *charButton) {
     actionButtons.push_back(new Button("movement.png"));
     actionButtons.back()->setPosition(charButton->getPosition().x + 85, charButton->getPosition().y + 150);
 }
-
 
 //Loads the font
 void loadFont() {
