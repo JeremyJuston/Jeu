@@ -11,16 +11,12 @@ RenderWindow window(VideoMode(WIN_WIDTH, WIN_HEIGHT), "Titre");
 Font font;
 Input input;
 Text text;
-std::vector<Button*> characterButtons;
-std::vector<Button*> actionButtons;
-std::vector<Button*> rangeButtons;
-Character *activeChar;
-string activeAction;
+
 
 //Manages the game Window
-void manageWindow(Field field) {
+void Window::manageWindow(Field field) {
     
-    loadFont();
+    window.loadFont();
     setUpText(text, "TEST", 30, Color::Yellow);
     characterButtons = createButtonCharacterList(field);
     
@@ -49,12 +45,12 @@ void manageWindow(Field field) {
     }
 }
 
-void clearDisplay() {
+void Window::clearDisplay() {
     actionButtons.clear();
     rangeButtons.clear();
 }
 
-void actionClicked(Field field, int act_index) {
+void Window::actionClicked(Field field, int act_index) {
     if (act_index == 0) {
         activeAction = "attack";
     }
@@ -65,12 +61,12 @@ void actionClicked(Field field, int act_index) {
     cout << activeAction << endl;
 }
 
-void characterClicked(Field field, int char_index) {
+void Window::characterClicked(Field field, int char_index) {
     createActions(characterButtons[char_index]);
     activeChar = field.getCharacters()[char_index];
 }
 
-void rangeClicked(Field field, int range_index) {
+void Window::rangeClicked(Field field, int range_index) {
     int x_case = int(rangeButtons[range_index]->getPosition().x / 150);
     int y_case = int(rangeButtons[range_index]->getPosition().y / 150);
     cout << x_case << y_case << endl;
@@ -99,7 +95,7 @@ void rangeClicked(Field field, int range_index) {
 }
 
 
-void createRangeList(Field field) {
+void Window::createRangeList(Field field) {
     int size = 150;
     int range = 0;
     Texture texture;
@@ -130,13 +126,13 @@ void createRangeList(Field field) {
  
 }
 
-void displayRange() {
+void Window::displayRange() {
     for (int i = 0; i < rangeButtons.size(); i += 1) {
         window.draw(rangeButtons[i]->getSprite());
     }
 }
 
-void checkAction(Field field) {
+void Window::checkAction(Field field) {
     
     bool case_found = false;
 
@@ -192,7 +188,7 @@ void checkAction(Field field) {
     }
 }
 
-void createActions(Button *charButton) {
+void Window::createActions(Button *charButton) {
     actionButtons.push_back(new Button("attack.png"));
     actionButtons.back()->setPosition(charButton->getPosition().x + 15, charButton->getPosition().y + 150);
 
@@ -201,13 +197,13 @@ void createActions(Button *charButton) {
 }
 
 //Loads the font
-void loadFont() {
+void Window::loadFont() {
     if (!font.loadFromFile("res/Roboto-Light.ttf")) {
         cout << "Error : Font couldn't be loaded." << endl;
     }
 }
 
-void setUpText(Text text, String txt, int size, Color color, Text::Style style1, Text::Style style2) {
+void Window::setUpText(Text text, String txt, int size, Color color, Text::Style style1, Text::Style style2) {
 
     text.setFont(font);
     text.setString(txt);
@@ -217,7 +213,7 @@ void setUpText(Text text, String txt, int size, Color color, Text::Style style1,
 }
 
 // Creates the board with all boxes
-void createGround(RenderWindow& window) {
+void Window::createGround(RenderWindow& window) {
     int size = 150;
     int numberCases = int(WIN_WIDTH * WIN_HEIGHT / (size * size));
 
@@ -248,7 +244,7 @@ void createGround(RenderWindow& window) {
     }   
 }
 
-std::vector<Button *> createButtonCharacterList(Field field) {
+std::vector<Button *> Window::createButtonCharacterList(Field field) {
     std::vector<Button *> characterButtonList;
 
     for (int i = 0; i < field.getCharacters().size(); i++) {
@@ -259,7 +255,7 @@ std::vector<Button *> createButtonCharacterList(Field field) {
     return characterButtonList;
 }
 
-void displayCharacters(sf::RenderWindow& window, std::vector<Button *> characList) {
+void Window::displayCharacters(sf::RenderWindow& window, std::vector<Button *> characList) {
     
     for (int i = 0; i < characList.size(); i++) {
         window.draw(characList[i]->getSprite());
@@ -277,7 +273,7 @@ void displayCharacters(sf::RenderWindow& window, std::vector<Button *> characLis
     }
 }
 
-void displayActions(sf::RenderWindow& window, std::vector<Button*> actionList) {
+void Window::displayActions(sf::RenderWindow& window, std::vector<Button*> actionList) {
 
     for (int i = 0; i < actionList.size(); i++) {
         window.draw(actionList[i]->getSprite());

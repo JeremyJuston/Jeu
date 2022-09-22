@@ -1,24 +1,86 @@
-﻿  Window.cpp
-C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(197,101): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
+﻿  Button.cpp
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Button.cpp(44,54): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
           with
           [
               T=float
           ]
-C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(197,67): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Button.cpp(44,51): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
           with
           [
               T=float
           ]
-C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(200,101): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Button.cpp(48,26): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Button.cpp(48,23): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+  Window.cpp
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(17,12): error C2872: 'Window' : symbole ambigu
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.hpp(11,7): message : est peut-être 'Window'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\Texture.hpp(42,7): message : ou       'sf::Window'
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(19,12): error C2039: 'loadFont' n'est pas membre de 'sf::RenderWindow'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\RenderWindow.hpp(44): message : voir la déclaration de 'sf::RenderWindow'
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(48,12): error C2872: 'Window' : symbole ambigu
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.hpp(11,7): message : est peut-être 'Window'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\Texture.hpp(42,7): message : ou       'sf::Window'
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(53,12): error C2872: 'Window' : symbole ambigu
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.hpp(11,7): message : est peut-être 'Window'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\Texture.hpp(42,7): message : ou       'sf::Window'
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(64,12): error C2872: 'Window' : symbole ambigu
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.hpp(11,7): message : est peut-être 'Window'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\Texture.hpp(42,7): message : ou       'sf::Window'
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(69,12): error C2872: 'Window' : symbole ambigu
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.hpp(11,7): message : est peut-être 'Window'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\Texture.hpp(42,7): message : ou       'sf::Window'
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(98,12): error C2872: 'Window' : symbole ambigu
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.hpp(11,7): message : est peut-être 'Window'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\Texture.hpp(42,7): message : ou       'sf::Window'
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(129,12): error C2872: 'Window' : symbole ambigu
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.hpp(11,7): message : est peut-être 'Window'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\Texture.hpp(42,7): message : ou       'sf::Window'
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(135,12): error C2872: 'Window' : symbole ambigu
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.hpp(11,7): message : est peut-être 'Window'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\Texture.hpp(42,7): message : ou       'sf::Window'
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(191,12): error C2872: 'Window' : symbole ambigu
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.hpp(11,7): message : est peut-être 'Window'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\Texture.hpp(42,7): message : ou       'sf::Window'
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(193,101): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
           with
           [
               T=float
           ]
-C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(200,67): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(193,67): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
           with
           [
               T=float
           ]
-C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(245,39): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(245,36): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-  JeuTest.vcxproj -> C:\Users\Jérémy\Documents\github\loisirs\Jeu\x64\Debug\JeuTest.exe
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(196,101): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(196,67): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(200,12): error C2872: 'Window' : symbole ambigu
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.hpp(11,7): message : est peut-être 'Window'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\Texture.hpp(42,7): message : ou       'sf::Window'
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(206,12): error C2872: 'Window' : symbole ambigu
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.hpp(11,7): message : est peut-être 'Window'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\Texture.hpp(42,7): message : ou       'sf::Window'
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(216,12): error C2872: 'Window' : symbole ambigu
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.hpp(11,7): message : est peut-être 'Window'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\Texture.hpp(42,7): message : ou       'sf::Window'
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(241,39): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(241,36): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(247,29): error C2872: 'Window' : symbole ambigu
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.hpp(11,7): message : est peut-être 'Window'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\Texture.hpp(42,7): message : ou       'sf::Window'
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(258,12): error C2872: 'Window' : symbole ambigu
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.hpp(11,7): message : est peut-être 'Window'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\Texture.hpp(42,7): message : ou       'sf::Window'
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(276,12): error C2872: 'Window' : symbole ambigu
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.hpp(11,7): message : est peut-être 'Window'
+C:\Users\Jérémy\Documents\github\SFML-2.5.1\include\SFML\Graphics\Texture.hpp(42,7): message : ou       'sf::Window'
+  main.cpp
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\main.cpp(26,5): error C3861: 'manageWindow' : identificateur introuvable
+  Génération de code en cours...
