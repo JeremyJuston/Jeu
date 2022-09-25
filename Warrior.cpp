@@ -17,3 +17,7 @@ string Warrior::getImgString() {
     string warrior = "warrior.png";
     return warrior;
 }
+
+int Warrior::getMaxHp() {
+    return 100;
+}

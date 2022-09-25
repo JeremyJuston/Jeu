@@ -212,11 +212,10 @@ void Game::createRangeList(Field field) {
     this->setRangeButtons(rangeButtons);
 }
 
-void Game::createButtonCharacterList(Field field) {
+void Game::createCharacterList(Field field) {
     std::vector<Button*> characterButtonList;
 
     for (int i = 0; i < field.getCharacters().size(); i++) {
-
         characterButtonList.push_back(new Button(field.getCharacters()[i]->getImgString()));
         characterButtonList.back()->setPosition(field.getCharacters()[i]->getPositionX() * 150, field.getCharacters()[i]->getPositionY() * 150);
     }

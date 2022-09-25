@@ -9,6 +9,7 @@ public:
     Archer(bool team, int position[2]);
     void print();
     std::string getImgString();
+    int getMaxHp();
 };
 
 #endif

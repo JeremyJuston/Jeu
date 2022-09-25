@@ -28,6 +28,7 @@ public:
     int getPositionX();
     int getPositionY();
     int getHp();
+    int getMaxHp();
     int getAtk();
     int getSpd();
     int getRange();

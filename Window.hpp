@@ -16,7 +16,7 @@ void setUpText(Font font, sf::Text text, sf::String txt, int size, sf::Color col
 
 void createGround(sf::RenderWindow& window);
 
-void displayCharacters(sf::RenderWindow& window, std::vector<Button*> characList);
+void displayCharacters(sf::RenderWindow& window, Field field, std::vector<Button*> characList);
 void displayRange(std::vector<Button*> rangeButtons);
 void displayActions(sf::RenderWindow& window, std::vector<Button*> actionButtons);
 

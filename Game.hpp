@@ -39,7 +39,7 @@ class Game {
 		void characterClicked(Field field, int char_index);
 		void rangeClicked(Field field, int range_index);
 		void createRangeList(Field field);
-		void createButtonCharacterList(Field field);
+		void createCharacterList(Field field);
 
 
 };

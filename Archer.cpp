@@ -16,3 +16,7 @@ string Archer::getImgString() {
     string archer = "archer.png";
     return archer;
 }
+
+int Archer::getMaxHp() {
+    return 55;
+}

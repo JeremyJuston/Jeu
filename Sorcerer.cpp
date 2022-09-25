@@ -21,3 +21,7 @@ string Sorcerer::getImgString() {
 void Sorcerer::atk(Cell target) {
     
 };
+
+int Sorcerer::getMaxHp() {
+    return 40;
+}

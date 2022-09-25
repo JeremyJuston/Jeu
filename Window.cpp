@@ -19,7 +19,7 @@ void manageWindow(Field field, Game &game) {
     Text text;
     loadFont(font);
     setUpText(font, text, "TEST", 30, Color::Yellow);
-    game.createButtonCharacterList(field);
+    game.createCharacterList(field);
     
     int tour = 0;
     bool joueur1 = true;
@@ -39,7 +39,7 @@ void manageWindow(Field field, Game &game) {
         //window.draw(characterButtons[0]->getSprite());
         displayRange(game.getRangeButtons());
         createGround(window);
-        displayCharacters(window, game.getCharacterButtons());
+        displayCharacters(window, field, game.getCharacterButtons());
         displayActions(window, game.getActionButtons());
         
         //window.draw(button.getSprite());
@@ -101,7 +101,7 @@ void createGround(RenderWindow& window) {
 }
 
 
-void displayCharacters(sf::RenderWindow& window, std::vector<Button *> characList) {
+void displayCharacters(sf::RenderWindow& window, Field field, std::vector<Button *> characList) {
     
     for (int i = 0; i < characList.size(); i++) {
         window.draw(characList[i]->getSprite());
@@ -115,6 +115,44 @@ void displayCharacters(sf::RenderWindow& window, std::vector<Button *> characLis
         to_draw.setOutlineColor(sf::Color::Red);
         to_draw.setOutlineThickness(2);
         window.draw(to_draw);
+        
+
+        sf::RectangleShape hp_bar_outline = RectangleShape();
+        sf::RectangleShape hp_bar = RectangleShape();
+
+        int hp_pourcentage = 100 - int((field.getCharacters()[i]->getMaxHp() - 
+            field.getCharacters()[i]->getHp()) /
+            field.getCharacters()[i]->getMaxHp());
+
+        hp_bar_outline.setSize(Vector2f(100, 10));
+        hp_bar.setSize(Vector2f(hp_pourcentage, 10));
+
+
+        hp_bar_outline.setPosition(characList[i]->getSprite().getPosition().x + 25,
+            characList[i]->getSprite().getPosition().y + 120);
+        hp_bar.setPosition(characList[i]->getSprite().getPosition().x + 25,
+            characList[i]->getSprite().getPosition().y + 120);
+
+
+        sf::Color hp_color = sf::Color::Green;
+
+        if (hp_pourcentage < 25) {
+            hp_color = sf::Color::Red;
+        }
+        else if(hp_pourcentage < 50) {
+            hp_color = sf::Color::Yellow;
+        }
+
+        hp_bar_outline.setFillColor(sf::Color::Transparent);
+        hp_bar.setFillColor(hp_color);
+
+
+        hp_bar_outline.setOutlineColor(sf::Color::White);
+        hp_bar_outline.setOutlineThickness(1);
+
+
+        window.draw(hp_bar);
+        window.draw(hp_bar_outline);
         
     }
 }

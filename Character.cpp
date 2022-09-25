@@ -26,6 +26,10 @@ int Character::getHp() {
     return this->m_hp;
 }
 
+int Character::getMaxHp() {
+    return 100;
+}
+
 int Character::getSpd() {
     return this->m_spd;
 }

@@ -10,6 +10,7 @@ public:
     void print();
     std::string getImgString();
     void atk(Cell target);
+    int getMaxHp();
 };
 
 #endif
