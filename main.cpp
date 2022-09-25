@@ -23,6 +23,7 @@ int main()
     field.getCharacters()[0]->move(1, 0);
     field.print();
     field.showObjects();
-    manageWindow(field);
+    Game game;
+    manageWindow(field, game);
     return 0;
 }

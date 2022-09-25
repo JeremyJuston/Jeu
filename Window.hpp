@@ -6,38 +6,19 @@
 #include "Field.hpp"
 #include "Button.hpp"
 #include "Input.hpp"
+#include "Game.hpp"
 
 
-class Window {
-	private:
-		std::vector<Button*> characterButtons;
-		std::vector<Button*> actionButtons;
-		std::vector<Button*> rangeButtons;
-		Character* activeChar;
-		std::string activeAction;
+//Create the window
+void manageWindow(Field field, Game &game);
+void loadFont(Font font);
+void setUpText(Font font, sf::Text text, sf::String txt, int size, sf::Color color, sf::Text::Style style1 = sf::Text::Regular, sf::Text::Style style2 = sf::Text::Regular);
 
-	protected:
-		//Create the window
-		void manageWindow(Field field);
-		void loadFont();
-		void setUpText(sf::Text text, sf::String txt, int size, sf::Color color, sf::Text::Style style1 = sf::Text::Regular, sf::Text::Style style2 = sf::Text::Regular);
-		void createGround(sf::RenderWindow& window);
-		std::vector<Button*> createButtonCharacterList(Field field);
-		void displayCharacters(sf::RenderWindow& window, std::vector<Button*> characList);
+void createGround(sf::RenderWindow& window);
 
-		void checkAction(Field field);
-		void createActions(Button* charButton);
-		void displayActions(sf::RenderWindow& window, std::vector<Button*> actionList);
-		void clearDisplay();
-		void actionClicked(Field field, int act_index);
-		void characterClicked(Field field, int char_index);
-		void rangeClicked(Field field, int range_index);
-		void createRangeList(Field field);
-		void displayRange();
-};
-
-
-
+void displayCharacters(sf::RenderWindow& window, std::vector<Button*> characList);
+void displayRange(std::vector<Button*> rangeButtons);
+void displayActions(sf::RenderWindow& window, std::vector<Button*> actionButtons);
 
 
 //Window constants
