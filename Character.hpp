@@ -28,16 +28,18 @@ public:
     int getPositionX();
     int getPositionY();
     int getHp();
-    int getMaxHp();
+    virtual int getMaxHp() { return 100; };
     int getAtk();
     int getSpd();
     int getRange();
+    bool getTeam();
     void printChar();
     virtual void print() {};
     virtual std::string getImgString() {
         return "";
     };
     void move(int x, int y);
+    void loseHp(int damage);
     virtual void atk() {};
 };
 #endif

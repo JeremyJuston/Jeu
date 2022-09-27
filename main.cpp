@@ -14,9 +14,9 @@ int main()
     int pos[2] = { 0, 1 };
     int posi[2] = { 1, 1 };
 
-    field.addCharacter("archer", posi);
-    field.addCharacter("warrior", pos);
-    
+    field.addCharacter("archer", true, posi);
+    field.addCharacter("warrior", false, pos);
+
     field.print();
     field.showObjects();
     

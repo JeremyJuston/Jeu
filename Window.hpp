@@ -10,7 +10,7 @@
 
 
 //Create the window
-void manageWindow(Field field, Game &game);
+void manageWindow(Field &field, Game &game);
 void loadFont(Font font);
 void setUpText(Font font, sf::Text text, sf::String txt, int size, sf::Color color, sf::Text::Style style1 = sf::Text::Regular, sf::Text::Style style2 = sf::Text::Regular);
 

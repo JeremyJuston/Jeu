@@ -1,9 +1,33 @@
-﻿  Window.cpp
-C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(97,39): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(97,36): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(128,33): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+﻿  Game.cpp
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Game.cpp(9,13): warning C4101: 'm_activeChar' : variable locale non référencée
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Game.cpp(159,101): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
           with
           [
               T=float
           ]
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Game.cpp(159,67): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Game.cpp(162,101): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Game.cpp(162,67): warning C4244: 'argument' : conversion de 'T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+  Window.cpp
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(94,39): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(94,36): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Jérémy\Documents\github\loisirs\Jeu\Window.cpp(125,33): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+  main.cpp
+  Génération de code en cours...
   JeuTest.vcxproj -> C:\Users\Jérémy\Documents\github\loisirs\Jeu\x64\Debug\JeuTest.exe

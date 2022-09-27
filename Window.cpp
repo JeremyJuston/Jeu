@@ -12,7 +12,7 @@ RenderWindow window(VideoMode(WIN_WIDTH, WIN_HEIGHT), "Titre");
 
 
 //Manages the game Window
-void manageWindow(Field field, Game &game) {
+void manageWindow(Field &field, Game &game) {
     
     Font font;
     Input input;
@@ -33,15 +33,12 @@ void manageWindow(Field field, Game &game) {
         game.checkAction(field, input, window);
         input.setActions(false);
 
-
         window.clear(sf::Color::Black);
-        window.draw(text);
         //window.draw(characterButtons[0]->getSprite());
         displayRange(game.getRangeButtons());
         createGround(window);
         displayCharacters(window, field, game.getCharacterButtons());
         displayActions(window, game.getActionButtons());
-        
         //window.draw(button.getSprite());
         window.display();
     }
@@ -120,7 +117,7 @@ void displayCharacters(sf::RenderWindow& window, Field field, std::vector<Button
         sf::RectangleShape hp_bar_outline = RectangleShape();
         sf::RectangleShape hp_bar = RectangleShape();
 
-        int hp_pourcentage = 100 - int((field.getCharacters()[i]->getMaxHp() - 
+        int hp_pourcentage = 100 - int(100*(field.getCharacters()[i]->getMaxHp() - 
             field.getCharacters()[i]->getHp()) /
             field.getCharacters()[i]->getMaxHp());
 

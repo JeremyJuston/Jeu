@@ -58,17 +58,18 @@ void Game::setActiveAction(std::string actAction) {
 
 
 
-void Game::checkAction(Field field, Input input, RenderWindow &window) {
-
+void Game::checkAction(Field &field, Input input, RenderWindow &window) {
     bool case_found = false;
 
+    // Test actions 
     if (input.getAction().left_click == true && !case_found) {
         sf::Vector2i mouse_pos = input.getAction().mouse_position;
         
         for (int act_index = 0; act_index < this->getActionButtons().size(); act_index++) {
 
             if (this->getActionButtons()[act_index]->isInSpriteRect(mouse_pos.x, mouse_pos.y)) {
-                clearDisplay();
+                cout << "test act" << endl;
+                this->clearDisplay();
                 actionClicked(field, act_index);
                 case_found = true;
                 break;
@@ -76,12 +77,14 @@ void Game::checkAction(Field field, Input input, RenderWindow &window) {
         }
     }
 
-    if (input.getAction().left_click == true && !case_found) {
+    // Test characters
+    if (input.getAction().left_click == true && !case_found && this->getActiveAction() != "attack") {
         sf::Vector2i mouse_pos = input.getAction().mouse_position;
 
         for (int char_index = 0; char_index < this->getCharacterButtons().size(); char_index++) {
 
             if (this->getCharacterButtons()[char_index]->isInSpriteRect(mouse_pos.x, mouse_pos.y)) {
+                cout << "test char" << endl;
                 this->clearDisplay();
                 this->characterClicked(field, char_index);
                 case_found = true;
@@ -90,15 +93,18 @@ void Game::checkAction(Field field, Input input, RenderWindow &window) {
         }
     }
 
+    // Test ranges 
     if (input.getAction().left_click == true && !case_found) {
         sf::Vector2i mouse_pos = input.getAction().mouse_position;
 
         for (int range_index = 0; range_index < this->getRangeButtons().size(); range_index++) {
 
             if (this->getRangeButtons()[range_index]->isInSpriteRect(mouse_pos.x, mouse_pos.y)) {
+                cout << "test ran" << endl;
                 this->rangeClicked(field, range_index);
                 this->clearDisplay();
                 case_found = true;
+                this->setActiveAction("");
                 break;
             }
         }
@@ -106,7 +112,7 @@ void Game::checkAction(Field field, Input input, RenderWindow &window) {
 
 
     if (input.getAction().left_click == true && !case_found) {
-        clearDisplay();
+        this->clearDisplay();
     }
 
     if (input.getAction().escape == true) {
@@ -158,25 +164,46 @@ void Game::createActions(Button* charButton) {
     this->setActionButtons(actionButtons);
 }
 
-void Game::rangeClicked(Field field, int range_index) {
+void Game::rangeClicked(Field &field, int range_index) {
     int x_case = int(this->getRangeButtons()[range_index]->getPosition().x / 150);
     int y_case = int(this->getRangeButtons()[range_index]->getPosition().y / 150);
 
     if (field.getMap()[x_case + y_case * field.getWidth()].isOccupied() && this->getActiveAction() == "move") {
-
+    
     }
+
     else if (field.getMap()[x_case + y_case * field.getWidth()].isOccupied() && this->getActiveAction() == "attack") {
 
+        int char_index = 0;
+        for (char_index; char_index < field.getCharacters().size(); char_index++) {
+            
+            if (field.getCharacters()[char_index]->getPositionX() == x_case &&
+                field.getCharacters()[char_index]->getPositionY() == y_case) {
+                break;
+            }
+        }
+
+        if (this->getActiveChar()->getTeam() != field.getCharacters()[char_index]->getTeam()) {
+            field.loseHpFromField(char_index, this->getActiveChar()->getAtk());
+        }
     }
+
     else if (!field.getMap()[x_case + y_case * field.getWidth()].isOccupied() && this->getActiveAction() == "move") {
+
+        field.setOccupiedFromField(this->getActiveChar()->getPositionX(),
+                                    this->getActiveChar()->getPositionY(), false);
         this->getActiveChar()->move(x_case, y_case);
         int index_char = this->retrieveCharIndex(field);
+
+        field.setOccupiedFromField(x_case, y_case, false);
         this->getCharacterButtons()[index_char]->setPosition(x_case * 150, y_case * 150);
     }
-    else if (!field.getMap()[x_case + y_case * field.getWidth()].isOccupied() && this->getActiveAction() == "attack") {
 
+    else if (!field.getMap()[x_case + y_case * field.getWidth()].isOccupied() && this->getActiveAction() == "attack") {
+    
     }
 
+    cout << field.getCharacters()[1]->getHp() << endl;
 }
 
 void Game::createRangeList(Field field) {

@@ -26,10 +26,6 @@ int Character::getHp() {
     return this->m_hp;
 }
 
-int Character::getMaxHp() {
-    return 100;
-}
-
 int Character::getSpd() {
     return this->m_spd;
 }
@@ -40,6 +36,10 @@ int Character::getRange() {
 
 int Character::getAtk() {
     return this->m_atk;
+}
+
+bool Character::getTeam() {
+    return this->m_team;
 }
 
 bool Character::operator==(Character charac) {
@@ -61,4 +61,8 @@ void Character::printChar() {
 void Character::move(int x, int y) {
     this->m_position[0] = x;
     this->m_position[1] = y;
+}
+
+void Character::loseHp(int damage) {
+    this->m_hp -= damage;
 }

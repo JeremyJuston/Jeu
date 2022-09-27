@@ -31,13 +31,13 @@ class Game {
 		void setActiveChar(Character* actChar);
 		void setActiveAction(std::string actAction);
 
-		void checkAction(Field field, Input input, RenderWindow &window);
+		void checkAction(Field &field, Input input, RenderWindow &window);
 		int retrieveCharIndex(Field field);
 		void createActions(Button* charButton);
 		void clearDisplay();
 		void actionClicked(Field field, int act_index);
 		void characterClicked(Field field, int char_index);
-		void rangeClicked(Field field, int range_index);
+		void rangeClicked(Field &field, int range_index);
 		void createRangeList(Field field);
 		void createCharacterList(Field field);
 

@@ -50,13 +50,13 @@ std::vector <std::pair<int, int>> Field::reachableCases(int start_x, int start_y
 };
 
 
-void Field::addCharacter(string nom, int position[2]) {
+void Field::addCharacter(string nom, bool team, int position[2]) {
 	if (nom == "archer") {
-		this->m_characters.push_back(new Archer(true, position));
+		this->m_characters.push_back(new Archer(team, position));
 	} else if (nom == "warrior") {
-		this->m_characters.push_back(new Warrior(true, position));
+		this->m_characters.push_back(new Warrior(team, position));
 	} else if (nom == "sorcerer") {
-		this->m_characters.push_back(new Sorcerer(true, position));
+		this->m_characters.push_back(new Sorcerer(team, position));
 	} else {
 		cout << "The character " << nom << " doesn't exist." << endl;
 		return;
@@ -87,6 +87,14 @@ std::vector<Cell> Field::getMap() {
 	return this->m_map;
 }
 
+void Field::setOccupiedFromField(int x, int y, bool occupied){
+	this->m_map[x + y * m_width].setOccupied(occupied);
+}
+
+void Field::loseHpFromField(int char_index, int damage) {
+	this->m_characters[char_index]->loseHp(damage);
+}
+
 void Field::print() {
 	for (int i = 0; i < this->m_characters.size(); i++) {
 		this->m_characters[i]->print();
@@ -98,3 +106,4 @@ void Field::showObjects() {
 		cout << typeid(*(this->m_characters[i])).name() << endl;
 	}
 }
+
