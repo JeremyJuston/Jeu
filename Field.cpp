@@ -61,7 +61,7 @@ void Field::addCharacter(string nom, bool team, int position[2]) {
 		cout << "The character " << nom << " doesn't exist." << endl;
 		return;
 	}
-	this->m_map[position[0] * this->m_height + position[1] * this->m_width].setOccupied(true);
+	this->m_map[position[0] + position[1] * this->m_width].setOccupied(true);
 }
 
 void Field::delCharacter(Character *charac) {

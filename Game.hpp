@@ -38,8 +38,10 @@ class Game {
 		void actionClicked(Field field, int act_index);
 		void characterClicked(Field field, int char_index);
 		void rangeClicked(Field &field, int range_index);
-		void createRangeList(Field field);
-		void createCharacterList(Field field);
+		void createRangeButtons(Field field);
+		void createCharacterButtons(Field field);
+
+		void verifyDeaths(Field &field);
 
 
 };

@@ -20,7 +20,6 @@ int main()
     field.print();
     field.showObjects();
     
-    field.getCharacters()[0]->move(1, 0);
     field.print();
     field.showObjects();
     Game game;

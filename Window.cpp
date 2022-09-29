@@ -19,11 +19,11 @@ void manageWindow(Field &field, Game &game) {
     Text text;
     loadFont(font);
     setUpText(font, text, "TEST", 30, Color::Yellow);
-    game.createCharacterList(field);
+    game.createCharacterButtons(field);
     
     int tour = 0;
     bool joueur1 = true;
-    
+
     while (window.isOpen()) {
         Event event;
         
@@ -32,14 +32,16 @@ void manageWindow(Field &field, Game &game) {
         }
         game.checkAction(field, input, window);
         input.setActions(false);
-
+        
         window.clear(sf::Color::Black);
-        //window.draw(characterButtons[0]->getSprite());
+
         displayRange(game.getRangeButtons());
+        
         createGround(window);
+        
         displayCharacters(window, field, game.getCharacterButtons());
         displayActions(window, game.getActionButtons());
-        //window.draw(button.getSprite());
+        
         window.display();
     }
 }

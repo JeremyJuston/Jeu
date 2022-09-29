@@ -22,7 +22,7 @@ void displayActions(sf::RenderWindow& window, std::vector<Button*> actionButtons
 
 
 //Window constants
-const int WIN_WIDTH = 1200;
-const int WIN_HEIGHT = 750;
+const int WIN_WIDTH = 1250;
+const int WIN_HEIGHT = 800;
 
 #endif

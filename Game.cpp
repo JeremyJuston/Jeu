@@ -70,7 +70,7 @@ void Game::checkAction(Field &field, Input input, RenderWindow &window) {
             if (this->getActionButtons()[act_index]->isInSpriteRect(mouse_pos.x, mouse_pos.y)) {
                 cout << "test act" << endl;
                 this->clearDisplay();
-                actionClicked(field, act_index);
+                this->actionClicked(field, act_index);
                 case_found = true;
                 break;
             }
@@ -132,7 +132,7 @@ void Game::actionClicked(Field field, int act_index) {
     else if (act_index == 1) {
         this->setActiveAction("move");
     }
-    createRangeList(field);
+    createRangeButtons(field);
     cout << this->getActiveAction() << endl;
 }
 
@@ -168,6 +168,7 @@ void Game::rangeClicked(Field &field, int range_index) {
     int x_case = int(this->getRangeButtons()[range_index]->getPosition().x / 150);
     int y_case = int(this->getRangeButtons()[range_index]->getPosition().y / 150);
 
+
     if (field.getMap()[x_case + y_case * field.getWidth()].isOccupied() && this->getActiveAction() == "move") {
     
     }
@@ -186,6 +187,8 @@ void Game::rangeClicked(Field &field, int range_index) {
         if (this->getActiveChar()->getTeam() != field.getCharacters()[char_index]->getTeam()) {
             field.loseHpFromField(char_index, this->getActiveChar()->getAtk());
         }
+
+        this->verifyDeaths(field);
     }
 
     else if (!field.getMap()[x_case + y_case * field.getWidth()].isOccupied() && this->getActiveAction() == "move") {
@@ -202,11 +205,32 @@ void Game::rangeClicked(Field &field, int range_index) {
     else if (!field.getMap()[x_case + y_case * field.getWidth()].isOccupied() && this->getActiveAction() == "attack") {
     
     }
-
-    cout << field.getCharacters()[1]->getHp() << endl;
 }
 
-void Game::createRangeList(Field field) {
+void Game::verifyDeaths(Field &field) {
+    
+    bool dead = true;
+
+    while (dead) {
+        dead = false;
+
+        for (int char_index = 0; char_index < field.getCharacters().size(); char_index++) {
+
+            if (field.getCharacters()[char_index]->getHp() <= 0) {
+                field.setOccupiedFromField(field.getCharacters()[char_index]->getPositionX(),
+                                            field.getCharacters()[char_index]->getPositionY(),
+                                            false);
+                field.delCharacter(field.getCharacters()[char_index]);
+                this->createCharacterButtons(field);
+                dead = true;
+                break;
+            }
+        }
+    }
+}
+
+
+void Game::createRangeButtons(Field field) {
     int size = 150;
     int range = 0;
     Texture texture;
@@ -239,7 +263,7 @@ void Game::createRangeList(Field field) {
     this->setRangeButtons(rangeButtons);
 }
 
-void Game::createCharacterList(Field field) {
+void Game::createCharacterButtons(Field field) {
     std::vector<Button*> characterButtonList;
 
     for (int i = 0; i < field.getCharacters().size(); i++) {
